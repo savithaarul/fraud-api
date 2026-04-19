@@ -7,7 +7,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 import numpy as np
-import tensorflow as tf
+from tensorflow import keras
 import os
 import time
 
@@ -41,7 +41,7 @@ def load_model():
             f"Model file '{model_path}' not found. "
             "Upload fraud_model.h5 to the same folder as main.py."
         )
-    model = tf.keras.models.load_model(model_path)
+    model = keras.models.load_model(model_path)
     print(f"Model loaded: {model_path}")
     print(f"Input shape: {model.input_shape}")
 
